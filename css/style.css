@@ -215,9 +215,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--charcoal);
   border-top: 1px solid rgba(255,255,255,.08);
   padding: 16px 20px 24px;
-  display: flex;
   flex-direction: column;
   gap: 4px;
+  display: none;
+}
+.nav-mobile:not([hidden]) {
+  display: flex;
 }
 .nav-mobile-link {
   display: block;
