@@ -25,16 +25,9 @@ Search the HTML for these placeholders and replace them all:
 
 | Placeholder | Replace with |
 |---|---|
-| `[YOUR CITY]` | Your primary city (e.g., Provo) |
-| `[(XXX) XXX-XXXX]` | Your business phone number |
-| `+1[YOURPHONE]` | E.164 format phone (e.g., +18015550100) |
 | `[YOUR-EMAIL]` | Your business email |
-| `[YOUR-LICENSE-NUMBER]` | Utah GC license number |
+| `[YOUR-LICENSE-NUMBER]` | Utah GC license number | 
 | `[X]+` | Real project counts / review count |
-| `[X] yrs` | Years in business |
-| `[YOUR-FORMSPREE-ID]` | Your Formspree form ID (see below) |
-| `[YOUR-GOOGLE-REVIEW-LINK]` | Your Google review short link |
-| `[YOUR-GOOGLE-CID]` | Your Google Maps CID for schema |
 | Review placeholders | Real Google review text + names |
 | Gallery captions | Real project descriptions |
 
