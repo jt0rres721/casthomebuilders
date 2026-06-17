@@ -813,9 +813,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: #166534;
   font-weight: 600;
   font-size: 0.95rem;
-  display: flex;
+  display: none;
   align-items: center;
   gap: 10px;
+}
+.form-success:not([hidden]) {
+  display: flex;
 }
 
 /* ══════════════════════════════════════════════════════
