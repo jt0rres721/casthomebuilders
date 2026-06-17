@@ -340,9 +340,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .trust-grid {
   display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
   align-items: center;
   gap: 0;
+  justify-content: center;
 }
 
 .trust-item {
