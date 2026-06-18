@@ -129,6 +129,8 @@ if (form) {
 
       if (res.ok) {
         form.reset();
+        submitBtn.textContent = 'Send My Request →';
+        submitBtn.disabled = false;
         if (formSuccess) {
           formSuccess.hidden = false;
           formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
