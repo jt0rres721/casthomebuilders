@@ -328,7 +328,7 @@
           </div>
 
           <div class="contact-form-wrap">
-            <form class="contact-form" id="acc-contact-form" action="https://formspree.io/f/mojzznjj" method="POST" novalidate>
+            <form class="contact-form" id="acc-contact-form" action="https://formspree.io/f/mjgqonvy" method="POST" novalidate>
               <!-- Hidden field so you know this came from the accessibility page -->
               <input type="hidden" name="source" value="Accessibility Landing Page" />
               <input type="hidden" name="service" value="Aging-in-Place Bathroom Remodel" />
@@ -448,8 +448,9 @@
             btn.disabled = false;
             if (accSuccess) { accSuccess.hidden = false; accSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
           } else { throw new Error(); }
-        } catch {
-          alert('Something went wrong. Please call us directly at (801) 960-2033.');
+        } catch (err) {
+          const text = await res?.text?.() ?? 'no response';
+          alert('Error: ' + text);
           btn.textContent = 'Request My Free Assessment →';
           btn.disabled = false;
         }
