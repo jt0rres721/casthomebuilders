@@ -409,6 +409,11 @@
 }
 .acc-contact-details li svg { flex-shrink: 0; color: var(--amber); }
 
+.acc-contact .form-group select {
+  width: 100%;
+  min-width: 0;
+}
+
 .acc-phone-link {
   display: inline-flex;
   align-items: center;
@@ -545,4 +550,24 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+/* ── Mobile fix: prevent contact form from overflowing viewport ── */
+@media (max-width: 640px) {
+  .acc-contact .contact-form-wrap {
+    padding: 24px 20px;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .acc-contact .form-group select,
+  .acc-contact .form-group input,
+  .acc-contact .form-group textarea {
+    max-width: 100%;
+    font-size: 16px; /* prevents iOS auto-zoom on focus, which can cause layout shift */
+  }
+
+  .acc-contact-inner {
+    overflow-x: hidden;
+  }
 }
