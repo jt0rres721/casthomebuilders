@@ -437,8 +437,9 @@
         const btn = accForm.querySelector('button[type="submit"]');
         btn.textContent = 'Sending…';
         btn.disabled = true;
+        let res;
         try {
-          const res = await fetch(accForm.action, {
+          res = await fetch(accForm.action, {
             method: 'POST', body: new FormData(accForm),
             headers: { Accept: 'application/json' }
           });
@@ -447,10 +448,16 @@
             btn.textContent = 'Request My Free Assessment →';
             btn.disabled = false;
             if (accSuccess) { accSuccess.hidden = false; accSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
-          } else { throw new Error(); }
+          } else {
+            const text = await res.text();
+            throw new Error(text);
+          }
         } catch (err) {
-          const text = await res?.text?.() ?? 'no response';
-          alert('Error: ' + text);
+          let friendly = 'Something went wrong. Please call us directly at (801) 960-2033.';
+          if (err.message && err.message.toLowerCase().includes('email')) {
+            friendly = 'Please enter a valid email address.';
+          }
+          alert(friendly);
           btn.textContent = 'Request My Free Assessment →';
           btn.disabled = false;
         }
