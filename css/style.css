@@ -700,6 +700,25 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--charcoal);
 }
 
+.review-card--placeholder {
+  border-left-color: var(--border);
+  background: transparent;
+  box-shadow: none;
+  border: 1px dashed var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.review-placeholder-text {
+  text-align: center;
+  color: var(--mid-gray);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.review-placeholder-text p { font-size: 0.92rem; margin: 0; }
+
 .reviews-cta { text-align: center; }
 
 /* ══════════════════════════════════════════════════════
