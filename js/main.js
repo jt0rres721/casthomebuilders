@@ -44,18 +44,17 @@ navMobile.querySelectorAll('a').forEach(link => {
    Not every project needs the same treatment: mix and match freely as
    you get more photos for a given project. ─────────────────────────── */
 const PROJECTS = [
-  { id: 1, category: 'bathroom', title: 'Shower Remodel', location: 'American Fork, UT',
-    type: 'single', images: ['images/gallery-2.jpg'] },
   { id: 2, category: 'kitchen', title: 'Kitchen Remodel', location: 'Saratoga Springs, UT',
     type: 'single', images: ['images/gallery-3.jpg'] },
-  { id: 3, category: 'basement', title: 'Basement Entrance', location: 'Eagle Mountain, UT',
+  { id: 3, category: 'concrete', title: 'Basement Entrance', location: 'Eagle Mountain, UT',
     type: 'single', images: ['images/gallery-1.jpg'] },
   { id: 4, category: 'flooring', title: 'LVP Flooring', location: 'Draper, UT',
     type: 'single', images: ['images/gallery-4.jpg'] },
   { id: 5, category: 'bathroom', title: 'Bathroom Remodel', location: 'Provo, UT',
     type: 'single', images: ['images/gallery-5.jpg'] },
-  { id: 6, category: 'accessibility', title: 'Accessibility Bathroom Remodel', location: 'Pleasant Grove, UT',
-    type: 'single', images: ['images/gallery-6.jpg'] },
+  { id: 6, category: 'accessibility', title: 'Accessibility Bathroom Remodel', location: 'Orem, UT',
+    type: 'single', thumb: 'images/Lisa Bathroom/lisa1.jpg',
+    images: ['images/Lisa Bathroom/lisa1.jpg', 'images/Lisa Bathroom/lisa2.jpg', 'images/Lisa Bathroom/lisa3.jpg', 'images/Lisa Bathroom/lisa4.png'] },
   { id: 7, category: 'concrete', title: 'Patio Extension', location: 'Eagle Mountain, UT',
     type: 'single', images: ['images/concrete/patio_1.jpg', 'images/concrete/patio_2.jpg', 'images/concrete/patio_3.jpg', 'images/concrete/patio_4.jpg'] },
   { id: 8, category: 'concrete', title: 'Hot Tub Concrete Slab', location: 'Heber City, UT',
@@ -101,7 +100,7 @@ function renderGallery(filter) {
   if (galleryEmpty) galleryEmpty.hidden = true;
 
   filtered.forEach(p => {
-    const thumbUrl = p.type === 'beforeafter' ? p.after : p.images[p.images.length - 1];
+    const thumbUrl = p.thumb || (p.type === 'beforeafter' ? p.after : p.images[p.images.length - 1]);
     const card = document.createElement('div');
     card.className = 'gcard';
     card.innerHTML = `
