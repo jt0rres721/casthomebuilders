@@ -56,6 +56,10 @@ const PROJECTS = [
     type: 'single', images: ['images/gallery-5.jpg'] },
   { id: 6, category: 'accessibility', title: 'Accessibility Bathroom Remodel', location: 'Pleasant Grove, UT',
     type: 'single', images: ['images/gallery-6.jpg'] },
+  { id: 7, category: 'concrete', title: 'Patio Extension', location: 'Eagle Mountain, UT',
+    type: 'single', images: ['images/concrete/patio_1.jpg', 'images/concrete/patio_2.jpg', 'images/concrete/patio_3.jpg', 'images/concrete/patio_4.jpg'] },
+  { id: 8, category: 'concrete', title: 'Hot Tub Concrete Slab', location: 'Heber City, UT',
+    type: 'single', images: ['images/concrete/slab1.jpg', 'images/concrete/slab2.jpg', 'images/concrete/slab3.jpg'] },
 
   // EXAMPLE — how to add a before/after project once you have both photos:
   // { id: 7, category: 'concrete', title: 'Driveway Replacement', location: 'Lehi, UT',
@@ -97,7 +101,7 @@ function renderGallery(filter) {
   if (galleryEmpty) galleryEmpty.hidden = true;
 
   filtered.forEach(p => {
-    const thumbUrl = p.type === 'beforeafter' ? p.after : p.images[0];
+    const thumbUrl = p.type === 'beforeafter' ? p.after : p.images[p.images.length - 1];
     const card = document.createElement('div');
     card.className = 'gcard';
     card.innerHTML = `
@@ -173,9 +177,10 @@ function renderLightboxMedia() {
 
   } else if (currentProject.images.length > 1) {
     currentProject.images.forEach((src, i) => {
-      const slide = document.createElement('div');
+      const slide = document.createElement('img');
       slide.className = 'lightbox-slide' + (i === 0 ? ' active' : '');
-      slide.style.backgroundImage = `url('${src}')`;
+      slide.src = src;
+      slide.alt = `${currentProject.title} — photo ${i + 1}`;
       lightboxMedia.appendChild(slide);
     });
     const prev = document.createElement('div');
@@ -193,9 +198,10 @@ function renderLightboxMedia() {
     lightboxMedia.append(prev, next, counter);
 
   } else {
-    const slide = document.createElement('div');
+    const slide = document.createElement('img');
     slide.className = 'lightbox-slide active';
-    slide.style.backgroundImage = `url('${currentProject.images[0]}')`;
+    slide.src = currentProject.images[0];
+    slide.alt = currentProject.title;
     lightboxMedia.appendChild(slide);
   }
 }
