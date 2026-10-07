@@ -1,0 +1,8 @@
+# Copy this file to .dev.vars for local development (wrangler dev).
+# .dev.vars is gitignored — never commit real secrets.
+#
+# In production, set RESEND_API_KEY as a secret in the Cloudflare
+# dashboard: Worker -> Settings -> Variables and Secrets -> Add,
+# marked as "Secret" (encrypted), not a plain text variable.
+
+RESEND_API_KEY=re_your_api_key_here

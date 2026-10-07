@@ -2,13 +2,25 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "casthomebuilders",
   "compatibility_date": "2026-06-17",
+  "main": "worker.js",
   "observability": {
     "enabled": true
   },
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "binding": "ASSETS"
   },
   "compatibility_flags": [
     "nodejs_compat"
-  ]
+  ],
+  "r2_buckets": [
+    {
+      "binding": "SCAN_BUCKET",
+      "bucket_name": "casthomebuilders-scans"
+    }
+  ],
+  "vars": {
+    "NOTIFY_TO_EMAIL": "info@casthomebuilders.com",
+    "NOTIFY_FROM_EMAIL": "CAST Scan Tool <onboarding@resend.dev>"
+  }
 }

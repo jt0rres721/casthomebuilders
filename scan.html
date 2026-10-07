@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Free Bathroom Scan &amp; Estimate | CAST Home Builders</title>
+  <meta name="description" content="Scan your bathroom from your phone and get a free remodel estimate from CAST Home Builders within 24 hours." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://casthomebuilders.com/scan" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/scan.css" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+</head>
+<body class="scan-page">
+
+  <header class="scan-header">
+    <a href="https://casthomebuilders.com" class="logo" aria-label="CAST Home Builders home">
+      <span class="logo-text">CAST <span class="logo-accent">Home Builders</span></span>
+    </a>
+  </header>
+
+  <main class="scan-main container">
+
+    <!-- Intro -->
+    <section class="scan-step" id="step-intro">
+      <p class="section-eyebrow">Free Instant Bathroom Scan</p>
+      <h1 class="scan-title">Scan your bathroom.<br>Get your estimate within 24 hours.</h1>
+      <p class="scan-sub">Use your phone's camera right here &mdash; no app to download. Takes about a minute.</p>
+      <button type="button" class="btn btn-primary btn-lg" id="btn-start">Start My Scan</button>
+      <p class="scan-note scan-note-error" id="camera-error" hidden></p>
+    </section>
+
+    <!-- Step 1: before photo -->
+    <section class="scan-step" id="step-photo" hidden>
+      <p class="section-eyebrow">Step 1 of 3</p>
+      <h2 class="scan-title-sm">Take a &ldquo;before&rdquo; picture</h2>
+      <p class="scan-sub">We'll use this to show you an AI-generated &ldquo;after&rdquo; image alongside your estimate.</p>
+      <div class="camera-frame">
+        <video id="video-preview" autoplay playsinline muted></video>
+      </div>
+      <button type="button" class="btn btn-primary btn-lg" id="btn-capture-photo">Take Photo</button>
+    </section>
+
+    <!-- Step 1b: photo review -->
+    <section class="scan-step" id="step-photo-review" hidden>
+      <p class="section-eyebrow">Step 1 of 3</p>
+      <h2 class="scan-title-sm">Looks good?</h2>
+      <div class="camera-frame">
+        <img id="photo-result" alt="Your before photo" />
+      </div>
+      <div class="scan-actions">
+        <button type="button" class="btn btn-secondary" id="btn-retake-photo">Retake</button>
+        <button type="button" class="btn btn-primary btn-lg" id="btn-confirm-photo">Great, Continue</button>
+      </div>
+    </section>
+
+    <!-- Step 2: video scan -->
+    <section class="scan-step" id="step-video" hidden>
+      <p class="section-eyebrow">Step 2 of 3</p>
+      <h2 class="scan-title-sm">Walk us through your bathroom</h2>
+      <p class="scan-sub">Slowly pan around the room &mdash; floor to ceiling, all four walls &mdash; so we can generate your estimate.</p>
+      <div class="camera-frame scanning">
+        <video id="video-preview-2" autoplay playsinline muted></video>
+        <div class="scan-overlay" aria-hidden="true"></div>
+        <div class="scan-timer" id="scan-timer" hidden>0:00</div>
+      </div>
+      <button type="button" class="btn btn-primary btn-lg" id="btn-record">Start Scan</button>
+      <button type="button" class="btn btn-secondary btn-lg" id="btn-stop-record" hidden>Finish Scan</button>
+    </section>
+
+    <!-- Step 2b: video review -->
+    <section class="scan-step" id="step-video-review" hidden>
+      <p class="section-eyebrow">Step 2 of 3</p>
+      <h2 class="scan-title-sm">Scan complete!</h2>
+      <div class="camera-frame">
+        <video id="video-result" controls playsinline></video>
+      </div>
+      <div class="scan-actions">
+        <button type="button" class="btn btn-secondary" id="btn-retake-video">Redo Scan</button>
+        <button type="button" class="btn btn-primary btn-lg" id="btn-confirm-video">Looks Good</button>
+      </div>
+    </section>
+
+    <!-- Step 3: contact -->
+    <section class="scan-step" id="step-contact" hidden>
+      <p class="section-eyebrow">Step 3 of 3</p>
+      <h2 class="scan-title-sm">All done! Where should we send your estimate?</h2>
+      <form class="scan-form" id="contact-form">
+        <label for="contact-name">Name</label>
+        <input type="text" id="contact-name" name="name" autocomplete="name" required />
+
+        <label for="contact-email">Email</label>
+        <input type="email" id="contact-email" name="email" autocomplete="email" required />
+
+        <label for="contact-phone">Phone</label>
+        <input type="tel" id="contact-phone" name="phone" autocomplete="tel" required />
+
+        <label for="contact-address">Street Address <span class="scan-optional">(optional)</span></label>
+        <input type="text" id="contact-address" name="address" autocomplete="street-address" />
+
+        <button type="submit" class="btn btn-primary btn-lg btn-full" id="btn-submit">Get My Estimate</button>
+      </form>
+      <p class="scan-note scan-note-error" id="submit-error" hidden></p>
+    </section>
+
+    <!-- Uploading -->
+    <section class="scan-step" id="step-uploading" hidden>
+      <div class="scan-spinner" aria-hidden="true"></div>
+      <p class="scan-sub">Uploading your scan&hellip;</p>
+    </section>
+
+    <!-- Success -->
+    <section class="scan-step" id="step-success" hidden>
+      <h2 class="scan-title-sm">You're all set!</h2>
+      <p class="scan-sub">We've received your bathroom scan. Your estimate &mdash; along with an AI preview of your new bathroom &mdash; will be in your inbox within 24 hours.</p>
+    </section>
+
+  </main>
+
+  <script src="js/scan.js"></script>
+</body>
+</html>

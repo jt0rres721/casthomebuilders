@@ -1,0 +1,186 @@
+/* ════════════════════════════════════════════════════════
+   CAST HOME BUILDERS — scan.css
+   Styles for the standalone bathroom-scan tool (scan.html).
+   Reuses design tokens from style.css.
+   ════════════════════════════════════════════════════════ */
+
+.scan-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.scan-header {
+  padding: 20px;
+  text-align: center;
+}
+
+.scan-header .logo-text {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+.scan-header .logo-accent { color: var(--amber); }
+
+.scan-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 20px 60px;
+}
+
+/* ── Step visibility: base rule + :not([hidden]) override ──
+   See CLAUDE.md "display vs [hidden]" note — the override
+   must stay paired with the base rule or toggling breaks. ── */
+.scan-step { display: none; }
+.scan-step:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.scan-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 5vw, 2.3rem);
+  font-weight: 700;
+  color: var(--charcoal);
+  line-height: 1.25;
+}
+
+.scan-title-sm {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 4vw, 1.7rem);
+  font-weight: 700;
+  color: var(--charcoal);
+  line-height: 1.3;
+}
+
+.scan-sub {
+  font-size: 1rem;
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+.scan-note { font-size: 0.9rem; color: var(--slate); }
+.scan-note-error { color: #B3261E; }
+
+.scan-optional { color: var(--mid-gray); font-weight: 400; }
+
+/* ── Camera / preview frame ──────────────────────────── */
+.camera-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  max-height: 60vh;
+  background: var(--charcoal);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.camera-frame video,
+.camera-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Scanning overlay: pulsing corner brackets to sell the "scan" feel */
+.scan-overlay {
+  position: absolute;
+  inset: 24px;
+  border: 2px solid rgba(200, 136, 58, 0.85);
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 0 4000px rgba(28, 28, 30, 0.15);
+  animation: scan-pulse 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes scan-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+.scan-timer {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(28, 28, 30, 0.75);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.02em;
+}
+.scan-timer:not([hidden]) { display: inline-block; }
+
+/* .btn in style.css sets display:inline-flex, which beats [hidden] */
+.scan-step .btn[hidden] { display: none; }
+
+.scan-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Contact form ─────────────────────────────────────── */
+.scan-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  text-align: left;
+}
+
+.scan-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-top: 10px;
+}
+
+.scan-form input {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  color: var(--charcoal);
+}
+
+.scan-form input:focus-visible {
+  outline: none;
+  border-color: var(--amber);
+  box-shadow: 0 0 0 3px rgba(200, 136, 58, 0.18);
+}
+
+.scan-form button { margin-top: 18px; }
+
+/* ── Uploading spinner ────────────────────────────────── */
+.scan-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--amber-light);
+  border-top-color: var(--amber);
+  border-radius: 50%;
+  animation: scan-spin 0.8s linear infinite;
+}
+
+@keyframes scan-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 480px) {
+  .camera-frame { aspect-ratio: 3 / 4; max-height: 55vh; }
+}
